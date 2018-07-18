@@ -58,15 +58,17 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y</Command>
+      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y
+xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy external DLLs to target</Message>
+      <Message>Copy external DLLs and resources to target</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -77,6 +79,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -84,14 +87,30 @@
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y</Command>
+      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y
+xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy external DLLs to target</Message>
+      <Message>Copy external DLLs and resources to target</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\main.cpp" />
+    <ClCompile Include="..\source\Program.cpp" />
+    <ClCompile Include="..\source\Shader.cpp" />
+    <ClCompile Include="..\source\VertexArray.cpp" />
+    <ClCompile Include="..\source\VertexBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\enumHelper.h" />
+    <ClInclude Include="..\source\Program.h" />
+    <ClInclude Include="..\source\Shader.h" />
+    <ClInclude Include="..\source\VertexArray.h" />
+    <ClInclude Include="..\source\VertexBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\shaders\fragment.glsl" />
+    <None Include="..\resources\shaders\vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
