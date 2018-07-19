@@ -45,12 +45,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;*.dll</ExtensionsToDeleteOnClean>
     <IncludePath>$(SolutionDir)external\glew-2.1.0\include;$(SolutionDir)external\glfw-3.2.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)external\glfw-3.2.1\lib;$(SolutionDir)external\glew-2.1.0\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)external\glew-2.1.0\build\vc15\lib\RelWithDebInfo;$(SolutionDir)external\glfw-3.2.1\build\vc15\src\RelWithDebInfo;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;*.dll</ExtensionsToDeleteOnClean>
     <IncludePath>$(SolutionDir)external\glew-2.1.0\include;$(SolutionDir)external\glfw-3.2.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)external\glfw-3.2.1\lib;$(SolutionDir)external\glew-2.1.0\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)external\glew-2.1.0\build\vc15\lib\Release;$(SolutionDir)external\glfw-3.2.1\build\vc15\src\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -64,7 +64,7 @@
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y
+      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\build\vc15\bin\\RelWithDebInfo\*.dll" "$(TargetDir)" /D /K /Y
 xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
@@ -87,7 +87,7 @@ xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\bin\*.dll" "$(TargetDir)" /D /K /Y
+      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\build\vc15\bin\Release\*.dll" "$(TargetDir)" /D /K /Y
 xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
