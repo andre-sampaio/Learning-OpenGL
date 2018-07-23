@@ -4,7 +4,7 @@ Simple application to learn the basics of OpenGL.
 # Requirements
 ## Windows
 - Visual Studio 2017 (v141)
-- Windows SDK 10.0.17134.0
+- Windows SDK 10.0.16299.0
 - Graphics card with support to OpenGL 3.3
 - [Conan](https://conan.io/)
 
