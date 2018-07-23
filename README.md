@@ -14,7 +14,7 @@ Simple application to learn the basics of OpenGL.
 1- Add https://bintray.com/andresampaio/personaluse-repo as a conan remote repo.
   - Run `conan remote add andresampaio/personaluse-repo https://bintray.com/andresampaio/personaluse-repo`
 
-2- Run conan install *inside Learning-OpenGL project directory* (i.e.: Learning-OpenGL/Learning-OpenGL).
+2- Run conan install **inside Learning-OpenGL project directory** (i.e.: Learning-OpenGL/Learning-OpenGL).
   - `conan install . -s arch=x86`
  
 3- Open the solution and build
