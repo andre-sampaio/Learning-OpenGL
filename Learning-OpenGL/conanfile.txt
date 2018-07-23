@@ -1,6 +1,6 @@
 [requires]
-glew/2.1.0@release/x86
-glfw/3.2.1@release/x86
+glew/2.1.0@andresampaio/stable
+glfw/3.2.1@andresampaio/stable
 
 [generators]
 visual_studio
