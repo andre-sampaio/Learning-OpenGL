@@ -13,10 +13,13 @@ Simple application to learn the basics of OpenGL.
 ### Visual Studio
 1- Add https://bintray.com/andresampaio/personaluse-repo as a conan remote repo.
   - Run `conan remote add andresampaio/personaluse-repo https://bintray.com/andresampaio/personaluse-repo`
-  
-2- Open the solution and build
+
+2- Run conan install *inside Learning-OpenGL project directory* (i.e.: Learning-OpenGL/Learning-OpenGL).
+  - `conan install . -s arch=x86`
+ 
+3- Open the solution and build
 
 # Dependencies
-GLFW 3.2.1
-GLEW 2.1.0
-OpenGL 3.3
+- GLFW 3.2.1
+- GLEW 2.1.0
+- OpenGL 3.3
