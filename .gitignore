@@ -366,3 +366,7 @@ ASALocalRun/
 
 
 # End of https://www.gitignore.io/api/c++,visualstudio
+
+Learning-OpenGL/conanbuildinfo.props
+Learning-OpenGL/conanbuildinfo.txt
+Learning-OpenGL/conaninfo.txt

@@ -37,20 +37,22 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="conanbuildinfo.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="conanbuildinfo.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;*.dll</ExtensionsToDeleteOnClean>
-    <IncludePath>$(SolutionDir)external\glew-2.1.0\include;$(SolutionDir)external\glfw-3.2.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)external\glew-2.1.0\build\vc15\lib\RelWithDebInfo;$(SolutionDir)external\glfw-3.2.1\build\vc15\src\RelWithDebInfo;$(LibraryPath)</LibraryPath>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;*.dll</ExtensionsToDeleteOnClean>
-    <IncludePath>$(SolutionDir)external\glew-2.1.0\include;$(SolutionDir)external\glfw-3.2.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)external\glew-2.1.0\build\vc15\lib\Release;$(SolutionDir)external\glfw-3.2.1\build\vc15\src\Release;$(LibraryPath)</LibraryPath>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -64,12 +66,15 @@
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\build\vc15\bin\\RelWithDebInfo\*.dll" "$(TargetDir)" /D /K /Y
-xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
+      <Command>xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy external DLLs and resources to target</Message>
+      <Message>Copy resources to target</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>IF NOT EXIST $(ProjectDir)conanbuildinfo.props (conan install $(ProjectDir) -s arch=x86) ELSE (ECHO Already installed)</Command>
+      <Message>Run conan install if necessary</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -87,12 +92,15 @@ xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)external\glew-2.1.0\build\vc15\bin\Release\*.dll" "$(TargetDir)" /D /K /Y
-xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
+      <Command>xcopy "$(SolutionDir)resources\*" "$(TargetDir)" /D /K /Y /E /I /S</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy external DLLs and resources to target</Message>
+      <Message>Copy resources to target</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>IF NOT EXIST $(ProjectDir)conanbuildinfo.props (conan install $(ProjectDir) -s arch=x86) ELSE (ECHO Already installed)</Command>
+      <Message>Run conan install if necessary</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\main.cpp" />
