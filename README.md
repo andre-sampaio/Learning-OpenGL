@@ -12,7 +12,7 @@ Simple application to learn the basics of OpenGL.
 ## Windows
 ### Visual Studio
 1- Add https://bintray.com/andresampaio/personaluse-repo as a conan remote repo, if not already added.
-  - Run `conan remote add andresampaio/personaluse-repo https://bintray.com/andresampaio/personaluse-repo`
+  - Run `conan remote add andresampaio/personaluse-repo https://api.bintray.com/conan/andresampaio/personaluse-repo`
 
 2- Run conaninstall.bat **inside Learning-OpenGL project directory** (i.e.: Learning-OpenGL/Learning-OpenGL/conaninstall.bat).
   - `conaninstall.bat`
